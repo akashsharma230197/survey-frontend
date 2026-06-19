@@ -7,7 +7,7 @@ services:
     autoDeployTrigger: commit
     envVars:
       - key: VITE_API_URL
-        sync: false
+        value: https://survey-backend-yhiz.onrender.com
     routes:
       - type: rewrite
         source: /*
