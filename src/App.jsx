@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { ClipboardList, Loader2, RefreshCw, Send } from "lucide-react";
 
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+const API_URL =
+  import.meta.env.VITE_API_URL ??
+  (window.location.hostname.endsWith(".onrender.com")
+    ? "https://survey-backend-yhiz.onrender.com"
+    : "http://localhost:4000");
 
 function App() {
   const [health, setHealth] = useState(null);
