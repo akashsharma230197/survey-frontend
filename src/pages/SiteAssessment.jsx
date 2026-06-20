@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Loader2, Save } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { Loader2, Save } from "lucide-react";
 import { api } from "../api.js";
 
 const RATING_OPTIONS = [1, 2, 3, 4, 5];
 
 function SiteAssessment() {
   const { siteId } = useParams();
-  const [site, setSite] = useState(null);
   const [attributes, setAttributes] = useState([]);
   const [summary, setSummary] = useState(null);
   const [ratings, setRatings] = useState({});
@@ -20,9 +19,8 @@ function SiteAssessment() {
       setStatus("loading");
       setError("");
       try {
-        const [siteData, assessmentData] = await Promise.all([api.getSite(siteId), api.getAssessments(siteId)]);
+        const assessmentData = await api.getAssessments(siteId);
         if (!isMounted) return;
-        setSite(siteData);
         setAttributes(assessmentData.attributes);
         setSummary(assessmentData.summary);
         setRatings(
@@ -81,28 +79,16 @@ function SiteAssessment() {
 
   if (status === "loading") {
     return (
-      <section className="workspace">
-        <p className="status-row">
-          <Loader2 className="spin" size={16} /> Loading site
-        </p>
-      </section>
+      <p className="status-row">
+        <Loader2 className="spin" size={16} /> Loading assessment
+      </p>
     );
   }
 
   return (
-    <section className="workspace">
+    <div>
       <div className="toolbar">
-        <div>
-          <Link className="back-link" to="/">
-            <ArrowLeft size={16} /> All sites
-          </Link>
-          <p className="eyebrow">Module 2 · UXQI Assessment (38 attributes)</p>
-          <h1>{site?.name}</h1>
-          <p className="muted">
-            {site?.typology ? `${site.typology} · ` : ""}
-            {site?.location || "No location set"}
-          </p>
-        </div>
+        <p className="eyebrow">Module 2 · UXQI Assessment (38 attributes)</p>
         <button className="primary-button" type="button" onClick={save} disabled={status === "saving"}>
           {status === "saving" ? <Loader2 className="spin" size={16} /> : <Save size={17} />}
           Save ratings
@@ -165,7 +151,7 @@ function SiteAssessment() {
           </table>
         </div>
       ))}
-    </section>
+    </div>
   );
 }
 

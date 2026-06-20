@@ -345,6 +345,110 @@ select {
   font-weight: 700;
 }
 
+.tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 20px;
+}
+
+.tab-link {
+  padding: 8px 14px;
+  border: 1px solid #dde3e8;
+  border-radius: 999px;
+  color: #4d5d6c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: #ffffff;
+}
+
+.tab-link.active {
+  color: #ffffff;
+  background: #255f85;
+  border-color: #255f85;
+}
+
+.map-shell {
+  margin-bottom: 18px;
+  border: 1px solid #dde3e8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accessibility-score {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.persona-card {
+  padding: 16px;
+  border: 1px solid #dde3e8;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.persona-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.persona-card-header h3 {
+  margin: 0;
+}
+
+.persona-card p {
+  margin: 8px 0 0;
+  font-size: 0.92rem;
+}
+
+.journey-map {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.journey-stage {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef3f7;
+  color: #255f85;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.report-card-overall {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 16px 0 22px;
+  padding: 20px;
+  border: 1px solid #dde3e8;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.report-card-score {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #255f85;
+}
+
+.report-card-grade {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
 @media (max-width: 620px) {
   .app-shell {
     padding: 20px;
